@@ -1,0 +1,1211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For Soappyyy 🫧</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Great+Vibes&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+<style>
+*{
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
+}
+
+html,body{
+  width:100%;
+  height:100%;
+  overflow:hidden;
+  background:#030303;
+  color:white;
+  font-family:'Montserrat',sans-serif;
+}
+
+body{
+  position:relative;
+}
+
+/* ================= BACKGROUND ================= */
+
+#stars{
+  position:fixed;
+  inset:0;
+  pointer-events:none;
+  z-index:1;
+}
+
+.star{
+  position:absolute;
+  width:2px;
+  height:2px;
+  background:white;
+  border-radius:50%;
+  opacity:.7;
+  animation:twinkle 3s infinite ease-in-out;
+}
+
+@keyframes twinkle{
+  0%,100%{opacity:.15;transform:scale(.7)}
+  50%{opacity:.9;transform:scale(1.4)}
+}
+
+/* ================= GLASS HEARTS ================= */
+
+.heart-layer{
+  position:fixed;
+  inset:0;
+  pointer-events:none;
+  z-index:2;
+  overflow:hidden;
+}
+
+.heart{
+  position:absolute;
+  width:90px;
+  height:90px;
+  background:
+    linear-gradient(135deg,
+      rgba(255,255,255,.20),
+      rgba(255,80,150,.08) 35%,
+      rgba(255,0,70,.12) 70%,
+      rgba(255,255,255,.04));
+  border:1px solid rgba(255,255,255,.22);
+  backdrop-filter:blur(10px);
+  -webkit-backdrop-filter:blur(10px);
+  transform:rotate(-45deg);
+  box-shadow:
+    0 0 30px rgba(255,0,70,.22),
+    inset 8px 8px 18px rgba(255,255,255,.10),
+    inset -8px -8px 18px rgba(0,0,0,.30);
+  opacity:.42;
+  animation:floatHeart 8s ease-in-out infinite;
+}
+
+.heart::before,
+.heart::after{
+  content:"";
+  position:absolute;
+  width:100%;
+  height:100%;
+  background:inherit;
+  border:inherit;
+  border-radius:50%;
+}
+
+.heart::before{
+  top:-50%;
+  left:0;
+}
+
+.heart::after{
+  top:0;
+  left:50%;
+}
+
+.heart-shine{
+  position:absolute;
+  width:25px;
+  height:12px;
+  background:rgba(255,255,255,.40);
+  border-radius:50%;
+  top:14px;
+  left:15px;
+  filter:blur(2px);
+  z-index:5;
+}
+
+@keyframes floatHeart{
+  0%,100%{
+    transform:translateY(0) rotate(-45deg);
+  }
+  50%{
+    transform:translateY(-25px) rotate(-45deg);
+  }
+}
+
+/* ================= PAGES ================= */
+
+.page{
+  position:absolute;
+  inset:0;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  padding:35px;
+  opacity:0;
+  visibility:hidden;
+  transform:translateX(35px) scale(.98);
+  transition:
+    opacity .8s ease,
+    transform .8s ease,
+    visibility .8s;
+  z-index:5;
+  overflow-y:auto;
+}
+
+.page.active{
+  opacity:1;
+  visibility:visible;
+  transform:translateX(0) scale(1);
+}
+
+.content{
+  width:min(900px,95vw);
+  text-align:center;
+  position:relative;
+  z-index:10;
+}
+
+.tiny{
+  font-size:10px;
+  letter-spacing:5px;
+  text-transform:uppercase;
+  color:rgba(255,255,255,.52);
+  margin-bottom:18px;
+}
+
+h1{
+  font-family:'Cinzel',serif;
+  font-size:clamp(35px,6vw,72px);
+  font-weight:500;
+  letter-spacing:5px;
+  line-height:1.1;
+  text-shadow:0 0 30px rgba(255,0,70,.28);
+}
+
+.script{
+  font-family:'Great Vibes',cursive;
+  font-size:clamp(55px,9vw,100px);
+  color:#ffb3ca;
+  text-shadow:
+    0 0 15px rgba(255,90,140,.5),
+    0 0 50px rgba(255,0,70,.25);
+  margin-bottom:5px;
+}
+
+.subtitle{
+  margin-top:20px;
+  font-size:13px;
+  letter-spacing:2px;
+  color:rgba(255,255,255,.62);
+}
+
+button{
+  margin-top:35px;
+  padding:15px 28px;
+  background:rgba(255,255,255,.035);
+  border:1px solid rgba(255,130,160,.38);
+  color:white;
+  font-family:'Montserrat',sans-serif;
+  font-size:10px;
+  letter-spacing:3px;
+  cursor:pointer;
+  border-radius:30px;
+  backdrop-filter:blur(12px);
+  transition:.3s ease;
+}
+
+button:hover{
+  background:rgba(255,70,110,.14);
+  border-color:rgba(255,150,175,.8);
+  box-shadow:0 0 30px rgba(255,0,70,.2);
+  transform:translateY(-2px);
+}
+
+/* ================= GIF ================= */
+
+.gif-frame{
+  width:min(280px,75vw);
+  margin:28px auto 0;
+  padding:12px;
+  border:1px solid rgba(255,255,255,.13);
+  background:rgba(255,255,255,.025);
+  border-radius:24px;
+  box-shadow:0 0 35px rgba(255,0,70,.12);
+}
+
+/* ================= NAME PAGE ================= */
+
+.name-box{
+  margin:30px auto;
+  width:min(600px,90vw);
+  display:flex;
+  flex-direction:column;
+  gap:10px;
+}
+
+.name-line{
+  padding:14px 20px;
+  border:1px solid rgba(255,255,255,.10);
+  background:rgba(255,255,255,.025);
+  border-radius:16px;
+  text-align:left;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+}
+
+.name-line span:first-child{
+  font-family:'Cinzel',serif;
+  letter-spacing:2px;
+}
+
+.name-line span:last-child{
+  color:rgba(255,255,255,.5);
+  font-size:11px;
+}
+
+.soap{
+  color:#ff9fbd;
+}
+
+.issue{
+  color:#cda9ff;
+}
+
+/* ================= GLASS ================= */
+
+.glass{
+  width:min(750px,92vw);
+  padding:40px;
+  background:
+    linear-gradient(
+      135deg,
+      rgba(255,255,255,.075),
+      rgba(255,255,255,.018)
+    );
+  border:1px solid rgba(255,255,255,.13);
+  border-radius:28px;
+  backdrop-filter:blur(18px);
+  -webkit-backdrop-filter:blur(18px);
+  box-shadow:
+    0 25px 80px rgba(0,0,0,.5),
+    inset 0 1px 0 rgba(255,255,255,.08);
+}
+
+/* ================= PAGE 3 LETTER ================= */
+
+.message-wrap{
+  width:min(800px,94vw);
+  max-height:78vh;
+  overflow-y:auto;
+  padding:10px 14px 20px;
+  scrollbar-width:thin;
+  scrollbar-color:rgba(255,110,150,.45) transparent;
+}
+
+.message-wrap::-webkit-scrollbar{
+  width:4px;
+}
+
+.message-wrap::-webkit-scrollbar-track{
+  background:transparent;
+}
+
+.message-wrap::-webkit-scrollbar-thumb{
+  background:rgba(255,110,150,.45);
+  border-radius:10px;
+}
+
+.message-card{
+  position:relative;
+  text-align:left;
+  padding:38px 34px;
+  border-radius:30px;
+  background:
+    linear-gradient(
+      135deg,
+      rgba(255,255,255,.085),
+      rgba(255,255,255,.025)
+    );
+  border:1px solid rgba(255,255,255,.15);
+  backdrop-filter:blur(22px);
+  -webkit-backdrop-filter:blur(22px);
+  box-shadow:
+    0 30px 90px rgba(0,0,0,.55),
+    0 0 50px rgba(255,0,70,.08),
+    inset 0 1px 0 rgba(255,255,255,.10);
+}
+
+.message-card::before{
+  content:"";
+  position:absolute;
+  top:18px;
+  left:22px;
+  width:80px;
+  height:20px;
+  background:rgba(255,255,255,.10);
+  filter:blur(14px);
+  border-radius:50%;
+}
+
+.message-heading{
+  font-family:'Great Vibes',cursive;
+  font-size:45px;
+  color:#ffabc2;
+  margin-bottom:28px;
+  text-align:center;
+}
+
+#typedMessage{
+  font-family:'Montserrat',sans-serif;
+  font-size:14px;
+  line-height:2;
+  letter-spacing:.15px;
+  color:rgba(255,255,255,.86);
+  white-space:pre-wrap;
+  min-height:100px;
+}
+
+.message-cursor{
+  display:inline-block;
+  width:2px;
+  height:17px;
+  background:#ffabc2;
+  margin-left:3px;
+  vertical-align:-2px;
+  animation:cursorBlink .8s infinite;
+}
+
+@keyframes cursorBlink{
+  0%,45%{opacity:1}
+  46%,100%{opacity:0}
+}
+
+.continue-after-message{
+  opacity:0;
+  pointer-events:none;
+  transition:opacity 1s ease;
+}
+
+.continue-after-message.show{
+  opacity:1;
+  pointer-events:auto;
+}
+
+/* ================= LETTER ================= */
+
+.letter{
+  text-align:left;
+  font-size:14px;
+  line-height:2;
+  color:rgba(255,255,255,.78);
+}
+
+.hello{
+  font-family:'Great Vibes',cursive;
+  color:#ffabc2;
+  font-size:38px;
+  margin-bottom:20px;
+}
+
+.signature{
+  font-family:'Great Vibes',cursive;
+  color:#ffabc2;
+  font-size:34px;
+  margin-top:25px;
+}
+
+/* ================= LITTLE THINGS ================= */
+
+.little-grid{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:14px;
+  margin-top:28px;
+}
+
+.little-card{
+  text-align:left;
+  padding:22px;
+  min-height:125px;
+  border-radius:20px;
+  background:rgba(255,255,255,.035);
+  border:1px solid rgba(255,255,255,.10);
+  backdrop-filter:blur(14px);
+  transition:.3s ease;
+}
+
+.little-card:hover{
+  transform:translateY(-4px);
+  border-color:rgba(255,130,160,.3);
+}
+
+.little-number{
+  font-size:9px;
+  letter-spacing:3px;
+  color:#ff8eaf;
+  margin-bottom:13px;
+}
+
+.little-card p{
+  font-size:12px;
+  line-height:1.7;
+  color:rgba(255,255,255,.72);
+}
+
+/* ================= WISHES ================= */
+
+.wishes{
+  margin:30px auto;
+  width:min(550px,90vw);
+  display:flex;
+  flex-direction:column;
+  gap:11px;
+}
+
+.wish{
+  padding:15px 20px;
+  border-left:2px solid rgba(255,120,150,.55);
+  background:rgba(255,255,255,.025);
+  text-align:left;
+  font-size:12px;
+  letter-spacing:1px;
+  color:rgba(255,255,255,.75);
+}
+
+/* ================= FINAL ================= */
+
+.final-name{
+  font-family:'Great Vibes',cursive;
+  font-size:90px;
+  color:#ffadc5;
+  text-shadow:0 0 35px rgba(255,0,70,.35);
+}
+
+.final-small{
+  margin-top:8px;
+  font-size:11px;
+  letter-spacing:4px;
+  color:rgba(255,255,255,.55);
+}
+
+.final-message{
+  max-width:650px;
+  margin:25px auto 0;
+  font-size:14px;
+  line-height:1.9;
+  color:rgba(255,255,255,.75);
+}
+
+/* ================= FIREWORKS ================= */
+
+.firework{
+  position:fixed;
+  width:5px;
+  height:5px;
+  border-radius:50%;
+  background:#ff6d9c;
+  box-shadow:
+    0 0 10px #ff6d9c,
+    0 0 30px #ff6d9c;
+  pointer-events:none;
+  z-index:20;
+  animation:explode 1.5s ease-out forwards;
+}
+
+@keyframes explode{
+  0%{
+    transform:scale(1);
+    opacity:1;
+  }
+  100%{
+    transform:scale(18);
+    opacity:0;
+  }
+}
+
+/* ================= MOBILE ================= */
+
+@media(max-width:600px){
+
+  .page{
+    padding:22px 16px;
+  }
+
+  .tiny{
+    font-size:8px;
+    letter-spacing:3px;
+  }
+
+  h1{
+    font-size:34px;
+    letter-spacing:3px;
+  }
+
+  .script{
+    font-size:62px;
+  }
+
+  .subtitle{
+    font-size:11px;
+    line-height:1.7;
+  }
+
+  .name-line{
+    padding:12px 14px;
+    flex-direction:column;
+    align-items:flex-start;
+    gap:5px;
+  }
+
+  .glass{
+    padding:27px 20px;
+  }
+
+  .message-wrap{
+    max-height:78vh;
+    padding:5px;
+  }
+
+  .message-card{
+    padding:30px 22px;
+  }
+
+  .message-heading{
+    font-size:40px;
+  }
+
+  #typedMessage{
+    font-size:12.5px;
+    line-height:1.9;
+  }
+
+  .little-grid{
+    grid-template-columns:1fr;
+  }
+
+  .little-card{
+    min-height:auto;
+  }
+
+  .final-name{
+    font-size:68px;
+  }
+
+  .final-message{
+    font-size:12px;
+  }
+
+  button{
+    padding:13px 20px;
+    font-size:9px;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<div id="stars"></div>
+<div class="heart-layer" id="heartLayer"></div>
+
+<!-- ================= PAGE 1 ================= -->
+
+<section class="page active">
+
+  <div class="content">
+
+    <div class="tiny">a little something for</div>
+
+    <div class="script">Soappyyy 🫧</div>
+
+    <h1>HAPPY BIRTHDAY</h1>
+
+    <div class="subtitle">
+      yes... this little surprise is actually for you.
+    </div>
+
+    <div class="gif-frame">
+      <div class="tenor-gif-embed"
+           data-postid="17972945"
+           data-share-method="host"
+           data-aspect-ratio="1"
+           data-width="100%">
+        <a href="https://tenor.com/view/shiro-cute-no-game-no-life-gif-17972945">
+          Shiro Cute Sticker
+        </a>
+        from
+        <a href="https://tenor.com/search/shiro-stickers">
+          Shiro Stickers
+        </a>
+      </div>
+    </div>
+
+    <button onclick="nextPage()">
+      ENTER YOUR SURPRISE →
+    </button>
+
+  </div>
+
+</section>
+
+
+<!-- ================= PAGE 2 ================= -->
+
+<section class="page">
+
+  <div class="content">
+
+    <div class="tiny">we need to address something</div>
+
+    <h1>THE NAME PROBLEM</h1>
+
+    <div class="name-box">
+
+      <div class="name-line">
+        <span>Lakshya</span>
+        <span>too formal.</span>
+      </div>
+
+      <div class="name-line">
+        <span class="soap">Soap 🫧</span>
+        <span>acceptable.</span>
+      </div>
+
+      <div class="name-line">
+        <span class="soap">Soappyyy</span>
+        <span>YES. that's the one.</span>
+      </div>
+
+      <div class="name-line">
+        <span class="issue">Issue-Tissue</span>
+        <span>apparently, that's me. 😭</span>
+      </div>
+
+    </div>
+
+    <button onclick="nextPage()">
+      OKAY, CONTINUE →
+    </button>
+
+  </div>
+
+</section>
+
+
+<!-- ================= PAGE 3 ================= -->
+
+<section class="page">
+
+  <div class="content">
+
+    <div class="tiny">something I actually wanted to say</div>
+
+    <div class="message-wrap">
+
+      <div class="message-card">
+
+        <div class="message-heading">
+          Happy Birthday ❤️
+        </div>
+
+        <div id="typedMessage"></div>
+
+        <div class="message-cursor" id="cursor"></div>
+
+      </div>
+
+    </div>
+
+    <div class="continue-after-message" id="messageButton">
+
+      <button onclick="nextPage()">
+        KEEP GOING →
+      </button>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- ================= PAGE 4 ================= -->
+
+<section class="page">
+
+  <div class="content">
+
+    <div class="tiny">from your</div>
+
+    <div class="script">Issue-Tissue</div>
+
+    <div class="glass">
+
+      <div class="letter">
+
+        <div class="hello">
+          Dear Soappyyy,
+        </div>
+
+        <p>
+          Not every person needs a huge explanation to have a place in someone's memories.
+        </p>
+
+        <p>
+          Sometimes people simply become part of the little things.... random conversations,
+          stupid jokes, annoying each other, and moments that seemed ordinary at the time.
+        </p>
+
+        <p>
+          Somehow, those little things become the memories we remember later.
+        </p>
+
+        <p>
+          So today deserved a little more than just a simple
+          "Happy Birthday."
+        </p>
+
+        <div class="signature">
+          — Issue-Tissue ♡
+        </div>
+
+      </div>
+
+    </div>
+
+    <button onclick="nextPage()">
+      NEXT →
+    </button>
+
+  </div>
+
+</section>
+
+
+<!-- ================= PAGE 5 ================= -->
+
+<section class="page">
+
+  <div class="content">
+
+    <div class="tiny">the little things</div>
+
+    <h1>VERY YOU.</h1>
+
+    <div class="little-grid">
+
+      <div class="little-card">
+        <div class="little-number">01</div>
+        <p>Soap being Soap 🫧</p>
+      </div>
+
+      <div class="little-card">
+        <div class="little-number">02</div>
+        <p>Issue-Tissue reporting for duty. 😭</p>
+      </div>
+
+      <div class="little-card">
+        <div class="little-number">03</div>
+        <p>Random conversations that made absolutely no sense.</p>
+      </div>
+
+      <div class="little-card">
+        <div class="little-number">04</div>
+        <p>The stupid jokes that somehow became memories.</p>
+      </div>
+
+      <div class="little-card">
+        <div class="little-number">05</div>
+        <p>The countless "bro..." moments.</p>
+      </div>
+
+      <div class="little-card">
+        <div class="little-number">06</div>
+        <p>And somehow... here we are. 🖤</p>
+      </div>
+
+    </div>
+
+    <button onclick="nextPage()">
+      KEEP GOING →
+    </button>
+
+  </div>
+
+</section>
+
+
+<!-- ================= PAGE 6 ================= -->
+
+<section class="page">
+
+  <div class="content">
+
+    <div class="tiny">birthday wishes</div>
+
+    <h1>FOR YOU ✦</h1>
+
+    <div class="wishes">
+
+      <div class="wish">happiness that stays</div>
+
+      <div class="wish">peaceful days</div>
+
+      <div class="wish">dreams that come true</div>
+
+      <div class="wish">good people around you</div>
+
+      <div class="wish">success in whatever you chase</div>
+
+      <div class="wish">and LOTS of reasons to smile</div>
+
+    </div>
+
+    <div class="subtitle">
+      And obviously... you're legally required to have cake today. 🎂
+    </div>
+
+    <button onclick="nextPage()">
+      ONE LAST THING →
+    </button>
+
+  </div>
+
+</section>
+
+
+<!-- ================= PAGE 7 ================= -->
+
+<section class="page">
+
+  <div class="content">
+
+    <div class="tiny">once again...</div>
+
+    <div class="final-name">
+      Soappyyy
+    </div>
+
+    <h1>HAPPY BIRTHDAY</h1>
+
+    <div class="final-small">
+      from your Issue-Tissue 🫧
+    </div>
+
+    <div class="final-message">
+      I hope this year gives you more good days than bad ones,
+      more reasons to smile than overthink,
+      and a lot of moments worth remembering.
+      Stay annoying. Stay you.
+    </div>
+
+    <button onclick="restart()">
+      ↻ START AGAIN
+    </button>
+
+  </div>
+
+</section>
+
+
+<script src="https://tenor.com/embed.js"></script>
+
+<script>
+
+/* ================= PAGE CONTROL ================= */
+
+const pages = document.querySelectorAll(".page");
+let currentPage = 0;
+
+function nextPage(){
+
+  if(currentPage < pages.length - 1){
+
+    pages[currentPage].classList.remove("active");
+
+    currentPage++;
+
+    pages[currentPage].classList.add("active");
+
+    if(currentPage === 2){
+      startTyping();
+    }
+
+    if(currentPage === 6){
+      startFireworks();
+    }
+
+  }
+}
+
+
+/* ================= RESTART ================= */
+
+function restart(){
+
+  pages[currentPage].classList.remove("active");
+
+  currentPage = 0;
+
+  pages[currentPage].classList.add("active");
+
+  typedStarted = false;
+
+  document.getElementById("typedMessage").innerHTML = "";
+
+  document.getElementById("cursor").style.display = "inline-block";
+
+  document.getElementById("messageButton").classList.remove("show");
+}
+
+
+/* ================= STARS ================= */
+
+const stars = document.getElementById("stars");
+
+for(let i=0;i<100;i++){
+
+  const star = document.createElement("div");
+
+  star.className = "star";
+
+  star.style.left = Math.random()*100 + "%";
+  star.style.top = Math.random()*100 + "%";
+
+  star.style.animationDelay =
+    Math.random()*4 + "s";
+
+  star.style.animationDuration =
+    (2 + Math.random()*4) + "s";
+
+  stars.appendChild(star);
+}
+
+
+/* ================= GLASS HEARTS ================= */
+
+const heartLayer =
+  document.getElementById("heartLayer");
+
+for(let i=0;i<7;i++){
+
+  const heart =
+    document.createElement("div");
+
+  heart.className = "heart";
+
+  const size =
+    45 + Math.random()*80;
+
+  heart.style.width = size + "px";
+  heart.style.height = size + "px";
+
+  heart.style.left =
+    Math.random()*95 + "%";
+
+  heart.style.top =
+    Math.random()*95 + "%";
+
+  heart.style.animationDelay =
+    Math.random()*6 + "s";
+
+  heart.style.animationDuration =
+    (6 + Math.random()*5) + "s";
+
+  const shine =
+    document.createElement("div");
+
+  shine.className = "heart-shine";
+
+  heart.appendChild(shine);
+
+  heartLayer.appendChild(heart);
+}
+
+
+/* ================= PAGE 3 TYPING ================= */
+
+const message = `I don't really know how to put everything I feel for you into words, more than anything i just want to wish happiness for you. I genuinely want you to be happy, successful, peaceful and proud of the person you become.
+
+I know you handle so much even things you probably don't tell anyone. Bt honestly, I don't want to see you crying. I don't want to see you hurt, broken or going through things that make you feel like you're not okay... you deserve to smile bbbyyy You deserve peace. And I hope life gives you so many reasons to smile that you forget what sadness even feels likeee...
+
+if I'm being completely honest… I still want you. I don't know what the future holds for us...... and I don't want to force anything or expect anything from you. But if someday life gives us another chance, if our paths cross again and there's still a place for me in your life I'd want that chance... I'd want you.  🫠💓
+
+But even if life takes us in completely different directions, I'll still want the same thing for you..... for you to be happy
+
+And your voice… I don't think I'll ever be able to explain what it means to meehhh From the very first time I heard it.... there was just something about it that stayed with me. Even today your voice has a kind of comfort for me that I can't put into words 😭💕  
+
+Happy Birthday, Soappyyy. I hope you smiled at least once while reading this… warna Issue-Tissue personally complain karegi. 😭❤️`;
+
+let typedStarted = false;
+
+function startTyping(){
+
+  if(typedStarted) return;
+
+  typedStarted = true;
+
+  const output =
+    document.getElementById("typedMessage");
+
+  const cursor =
+    document.getElementById("cursor");
+
+  const button =
+    document.getElementById("messageButton");
+
+  let index = 0;
+
+  function typeWord(){
+
+    if(index < message.length){
+
+      let nextSpace =
+        message.indexOf(" ", index);
+
+      let nextNewline =
+        message.indexOf("\n", index);
+
+      let end;
+
+      if(
+        nextSpace === -1 &&
+        nextNewline === -1
+      ){
+
+        end = message.length;
+
+      }else if(nextSpace === -1){
+
+        end = nextNewline;
+
+      }else if(nextNewline === -1){
+
+        end = nextSpace;
+
+      }else{
+
+        end =
+          Math.min(nextSpace,nextNewline);
+
+      }
+
+      const word =
+        message.substring(index,end);
+
+      output.innerHTML +=
+        word;
+
+      index = end;
+
+      if(message[index] === "\n"){
+
+        output.innerHTML += "\n\n";
+
+        index++;
+
+      }else if(message[index] === " "){
+
+        output.innerHTML += " ";
+
+        index++;
+
+      }
+
+      const wrap =
+        document.querySelector(".message-wrap");
+
+      wrap.scrollTop =
+        wrap.scrollHeight;
+
+      setTimeout(typeWord,120);
+
+    }else{
+
+      cursor.style.display = "none";
+
+      setTimeout(()=>{
+        button.classList.add("show");
+      },700);
+
+    }
+
+  }
+
+  typeWord();
+}
+
+
+/* ================= FIREWORKS ================= */
+
+function startFireworks(){
+
+  let count = 0;
+
+  const interval =
+    setInterval(()=>{
+
+      createFirework();
+
+      count++;
+
+      if(count >= 12){
+        clearInterval(interval);
+      }
+
+    },450);
+}
+
+
+function createFirework(){
+
+  const firework =
+    document.createElement("div");
+
+  firework.className = "firework";
+
+  firework.style.left =
+    (15 + Math.random()*70) + "vw";
+
+  firework.style.top =
+    (15 + Math.random()*55) + "vh";
+
+  document.body.appendChild(firework);
+
+  setTimeout(()=>{
+    firework.remove();
+  },1500);
+}
+
+
+/* ================= KEYBOARD ================= */
+
+document.addEventListener("keydown",(e)=>{
+
+  if(e.key === "ArrowRight"){
+    nextPage();
+  }
+
+});
+
+
+/* ================= SWIPE ================= */
+
+let touchStartX = 0;
+
+document.addEventListener("touchstart",(e)=>{
+
+  touchStartX =
+    e.changedTouches[0].screenX;
+
+});
+
+document.addEventListener("touchend",(e)=>{
+
+  const touchEndX =
+    e.changedTouches[0].screenX;
+
+  if(touchStartX - touchEndX > 60){
+    nextPage();
+  }
+
+});
+
+</script>
+
+</body>
+</html>
